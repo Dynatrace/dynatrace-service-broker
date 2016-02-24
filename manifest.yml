@@ -1,0 +1,11 @@
+---
+applications:
+- name: ruxit-service-broker
+  memory: 512M
+  instances: 1
+  path: target/ruxit-service-broker.jar
+  buildpack: https://github.com/cloudfoundry/java-buildpack.git
+  env:
+    PLANS: '{"A" : {"name": "sprint-xum89155", "tenant" : "xum89155", "tenanttoken" : "yourtokenhere", "server" : "https://xum89155.restofurl"}, "B" : {"name": "prod-pqq24414", "tenant" : "pqq24414", "tenanttoken" : "yourtokenhere", "server" : "https://pqq24414.restofurl"}}'
+    SECURITY_USER_NAME: admin
+    SECURITY_USER_PASSWORD: admin
