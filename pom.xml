@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  ~ Copyright 2014 the original author or authors.
+  ~ Copyright 2014-2016 the original author or authors.
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -29,8 +29,8 @@
         <version>1.1.9.RELEASE</version>
     </parent>
 
-    <groupId>com.nebhale</groupId>
-    <artifactId>ruxit-service-broker</artifactId>
+    <groupId>com.ruxit</groupId>
+    <artifactId>dynatrace-service-broker</artifactId>
     <version>1.0.0.BUILD-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -76,7 +76,7 @@
     </dependencies>
 
     <build>
-        <finalName>ruxit-service-broker</finalName>
+        <finalName>dynatrace-service-broker</finalName>
 
         <plugins>
             <plugin>

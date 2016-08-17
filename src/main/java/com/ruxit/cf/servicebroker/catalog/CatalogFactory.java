@@ -38,7 +38,7 @@ public class CatalogFactory {
       return null;
     }
     for (RuxitPlan p : plans.values()) {
-      System.out.println("\t\tRuxitPlan: " + p + ", checking for planId: " + ruxitPlanId);
+      System.out.println("\t\tDynatracePlan: " + p + ", checking for planId: " + ruxitPlanId);
       if (p.getPlanId().equals(ruxitPlanId)) {
         return p;
       }
@@ -51,7 +51,7 @@ public class CatalogFactory {
       return null;
     }
     for (RuxitPlan p : plans.values()) {
-      System.out.println("\t\tRuxitPlan: " + p + ", checking for planname: " + ruxitPlanName);
+      System.out.println("\t\tDynatracePlan: " + p + ", checking for planname: " + ruxitPlanName);
       if (p.getName().equals(ruxitPlanName)) {
         return p;
       }
@@ -63,7 +63,7 @@ public class CatalogFactory {
     throws Exception
   {
     System.out.println("PLANS set to: " + ruxitPlans);
-    String serviceId = UUID.nameUUIDFromBytes("Ruxit_ServiceId_v1".getBytes()).toString();
+    String serviceId = UUID.nameUUIDFromBytes("Dynatrace_ServiceId_v1".getBytes()).toString();
 
     ObjectMapper objectMapper = new ObjectMapper();
     objectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
@@ -71,20 +71,20 @@ public class CatalogFactory {
 
     for (RuxitPlan p : plans.values()) {
       p.setPlanId();
-      System.out.println("\t\tRuxitPlan: " + p);
+      System.out.println("\t\tDynatracePlan: " + p);
     }
 
     return new Catalog()
                     .service()
                           .id(UUID.fromString(serviceId))
-                          .name("ruxit")
-                          .description("Ruxit is all-in-one full stack performance monitoring and management powered by artificial intelligence")
+                          .name("dynatrace")
+                          .description("Dynatrace is all-in-one full stack performance monitoring and management powered by artificial intelligence")
                           .bindable(Boolean.valueOf(true))
-                          .tags(new String[] { "ruxit", "performance", "monitoring", "apm", "analytics" })
+                          .tags(new String[] { "dynatrace", "performance", "monitoring", "apm", "analytics", "ruxit" })
                           .metadata()
-                              .displayName("Ruxit")
+                              .displayName("Dynatrace")
                               .imageUrl(URI.create("https://ruxit.com/images/ruxit_signet.jpg"))
-                              .longDescription("Ruxit is all-in-one full stack performance " +
+                              .longDescription("Dynatrace is all-in-one full stack performance " +
                                    "monitoring and management powered by artificial " +
                                    "intelligence that provides you with automated application-health " +
                                    "and root-cause analysis information to quickly identify " +
