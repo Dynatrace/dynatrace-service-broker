@@ -30,7 +30,7 @@
     </parent>
 
     <groupId>com.ruxit</groupId>
-    <artifactId>ruxit-service-broker</artifactId>
+    <artifactId>dynatrace-service-broker</artifactId>
     <version>1.0.0.BUILD-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -76,7 +76,7 @@
     </dependencies>
 
     <build>
-        <finalName>ruxit-service-broker</finalName>
+        <finalName>dynatrace-service-broker</finalName>
 
         <plugins>
             <plugin>
