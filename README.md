@@ -1,6 +1,6 @@
-# Ruxit Service Broker
+# Dynatrace Service Broker
 
-This project is a self-hostable application that provides a service broker that proxies Ruxit credentials to applications.  This is typically useful for on-premise deployments of Cloud Foundry that wish to easily bind to an off-premise Ruxit deployment.  In order to facilitate self-hosting, the application is designed to work in [Cloud Foundry][p].
+This project is a self-hostable application that provides a service broker that proxies Dynatrace credentials to applications.  This is typically useful for on-premise deployments of Cloud Foundry that wish to easily bind to an off-premise Ruxit deployment.  In order to facilitate self-hosting, the application is designed to work in [Cloud Foundry][p].
 
 ## Requirements
 
@@ -18,13 +18,13 @@ $ cf push
 ```
 
 ### Environment Variables
-Since the application is designed to work in a PaaS environment, all configuration is done with environment variables.  The `tenant`, `tenanttoken` and `server` value need to be provided by Ruxit.  All others are unique to a deployment.
+Since the application is designed to work in a PaaS environment, all configuration is done with environment variables.  The `environmentid`, `tenanttoken` and `endpoint` value need to be provided by Ruxit.  All others are unique to a deployment.
 
 | Key | Description
 | --- | -----------
-| `tenant` | Your Ruxit tenant ID is the unique identifier of your Ruxit environment. You can find it easily by looking at the URL in your browser when you are logged into your Ruxit environment. The subdomain {tenant} in https://{tenant}.live.ruxit.com represents your tenant ID.
+| `environmentid` | Your Ruxit environmentid ID is the unique identifier of your Ruxit environment. You can find it easily by looking at the URL in your browser when you are logged into your Ruxit environment. The subdomain {environmentid} in https://{environmentid}.live.ruxit.com represents your environmentid ID.
 | `tenanttoken` | The token for your Ruxit environment. You can find it in the deploy Ruxit section within your environment.
-| `server` | The Ruxit server connection URL to connect to. Use `host:port` format for a specific port number. 
+| `endpoint` | The Ruxit endpoint connection URL to connect to. Use `host:port` format for a specific port number. 
 | `SECURITY_USER_NAME` | The username that the Cloud Foundry Cloud Controller should use to authenticate.  This can be any value.
 | `SECURITY_USER_PASSWORD` | The password that the Cloud Foundry Cloud Controller should use to authenticate.  This can be any value
 
