@@ -59,10 +59,10 @@ public class CatalogFactory {
     return null;
   }
   @Bean
-  Catalog catalog(@Value("${PLANS}") String dynatracePlans)
+  Catalog catalog(@Value("${DYNATRACE_SERVICE_PLANS}") String dynatracePlans)
     throws Exception
   {
-    System.out.println("PLANS set to: " + dynatracePlans);
+    System.out.println("DYNATRACE_SERVICE_PLANS set to: " + dynatracePlans);
     String serviceId = UUID.nameUUIDFromBytes("Dynatrace_ServiceId_v1".getBytes()).toString();
 
     ObjectMapper objectMapper = new ObjectMapper();
