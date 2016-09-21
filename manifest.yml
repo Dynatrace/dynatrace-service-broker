@@ -6,6 +6,6 @@ applications:
   path: target/dynatrace-service-broker.jar
   buildpack: https://github.com/cloudfoundry/java-buildpack.git
   env:
-    PLANS: '{"A" : {"name": "sprint-xum89155", "environmentid" : "xum89155", "tenanttoken" : "yourtokenhere", "apikey":"key", "endpoint" : "https://xum89155.restofurl"}, "B" : {"name": "prod-pqq24414", "environmentid" : "pqq24414", "tenanttoken" : "yourtokenhere", "endpoint" : "https://pqq24414.restofurl"}}'
+    DYNATRACE_SERVICE_PLANS: '{"A" : {"name": "sprint-xum89155", "environmentid" : "xum89155", "tenanttoken" : "yourtokenhere", "apikey":"key", "endpoint" : "https://xum89155.restofurl"}, "B" : {"name": "prod-pqq24414", "environmentid" : "pqq24414", "tenanttoken" : "yourtokenhere", "endpoint" : "https://pqq24414.restofurl"}}'
     SECURITY_USER_NAME: admin
     SECURITY_USER_PASSWORD: admin
