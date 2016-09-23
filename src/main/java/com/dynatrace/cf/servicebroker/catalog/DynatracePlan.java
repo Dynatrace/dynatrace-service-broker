@@ -10,7 +10,7 @@ public class DynatracePlan {
     private String environmentid = null;
     private String tenanttoken = null;
     private String endpoint = null;
-    private String apikey = null;
+    private String apitoken = null;
     private String planId = null;
 
     public String getName() {
@@ -33,13 +33,13 @@ public class DynatracePlan {
 
     public void setTenanttoken(String tenanttoken) { this.tenanttoken = tenanttoken; }
 
-    public void setApikey(String apikey) { this.apikey = apikey; }
+    public void setApitoken(String apitoken) { this.apitoken = apitoken; }
 
     public String getTenanttoken() { return tenanttoken; }
 
     public String getEndpoint() { return endpoint; }
 
-    public String getApikey() { return apikey; }
+    public String getApitoken() { return apitoken; }
 
     public String getPlanId() {
         return this.planId;
@@ -47,8 +47,8 @@ public class DynatracePlan {
 
     public void setPlanId() throws Exception {
         System.out.println(this.toString());
-        if ((this.name == null) || (this.environmentid == null) || (this.tenanttoken == null && this.apikey == null)) {
-            throw new Exception("No null name,environmentid,apikey|tenanttoken allowed");
+        if ((this.name == null) || (this.environmentid == null) || (this.tenanttoken == null && this.apitoken == null)) {
+            throw new Exception("No null name,environmentid,apitoken|tenanttoken allowed");
         }
 
         if (this.planId != null)
@@ -58,7 +58,7 @@ public class DynatracePlan {
     }
 
     public String toString() {
-        return "Plan [name=" + this.name + ", environmentid=" + this.environmentid + ", tenanttoken=" + this.tenanttoken + ", apikey=" + this.apikey + ", endpoint=" + this.endpoint +  ", planId=" + this.planId + "]";
+        return "Plan [name=" + this.name + ", environmentid=" + this.environmentid + ", tenanttoken=" + this.tenanttoken + ", apitoken=" + this.apitoken + ", endpoint=" + this.endpoint +  ", planId=" + this.planId + "]";
     }
 }
 

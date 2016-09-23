@@ -17,18 +17,18 @@
 package com.dynatrace.cf.servicebroker;
 
 /**
- * A holder for credential information such as the environmentid, apikey|tenanttoken, endpoint
+ * A holder for credential information such as the environmentid, apitoken|tenanttoken, endpoint
  */
 public final class Credentials {
 
   private String environmentid;
-  private String apikey;
+  private String apitoken;
   private String tenanttoken;
   private String endpoint;
 
-  public Credentials(String environmentid, String apikey, String tenanttoken, String endpoint) {
+  public Credentials(String environmentid, String apitoken, String tenanttoken, String endpoint) {
     this.environmentid = environmentid;
-    this.apikey = apikey;
+    this.apitoken = apitoken;
     this.tenanttoken = tenanttoken;
     this.endpoint = endpoint;
   }
@@ -41,8 +41,8 @@ public final class Credentials {
     return this.tenanttoken;
   }
 
-  public String getApikey() {
-    return this.apikey;
+  public String getApitoken() {
+    return this.apitoken;
   }
 
   public String getEndpoint() throws Exception {
