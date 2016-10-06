@@ -1,7 +1,7 @@
 ---
 applications:
 - name: dynatrace-service-broker
-  memory: 256M
+  memory: 400M
   instances: 1
   path: target/dynatrace-service-broker.jar
   buildpack: https://github.com/cloudfoundry/java-buildpack.git
