@@ -4,8 +4,9 @@ applications:
   memory: 400M
   instances: 1
   path: target/dynatrace-service-broker.jar
+  host: dt-sb
   buildpack: https://github.com/cloudfoundry/java-buildpack.git
   env:
-    DYNATRACE_SERVICE_PLANS: '{"A" : {"name": "sprint-xum89155", "environmentid" : "xum89155", "tenanttoken" : "yourtokenhere", "apitoken":"key", "endpoint" : "https://xum89155.restofurl"}, "B" : {"name": "prod-pqq24414", "environmentid" : "pqq24414", "tenanttoken" : "yourtokenhere", "endpoint" : "https://pqq24414.restofurl"}}'
+    DYNATRACE_SERVICE_PLANS: '{"A":{"name":"A","environmentid":"kwlxxxxx","apitoken":"xxxxxxxxxxx","apiurl":"https://yourmanagedcluster.com/api"},"B":{"name":"B","environmentid":"pdexxxxx","apitoken":"yyyyyyyyyyyyy","apiurl":"https://yourmanagedcluster.com/api"}}'
     SECURITY_USER_NAME: admin
     SECURITY_USER_PASSWORD: admin
