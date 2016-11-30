@@ -52,7 +52,7 @@ final class Service {
 
     private volatile DashboardClient dashboardClient;
 
-    private final static String DEFAULT_UUID = "a25048a0-2a79-49fd-aa4c-9506da581874"; // change for the next release
+    private final static String DEFAULT_UUID = "d4ec3afd-923e-4dc3-aaaa-59461d578e70"; // change for the next release
 
     Service(Catalog catalog) {
         this.catalog = catalog;

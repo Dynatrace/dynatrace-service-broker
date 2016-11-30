@@ -8,9 +8,8 @@ import java.util.UUID;
 public class DynatracePlan {
     private String name = null;
     private String environmentid = null;
-    private String tenanttoken = null;
-    private String endpoint = null;
     private String apitoken = null;
+    private String apiurl = null;
     private String planId = null;
 
     public String getName() {
@@ -29,17 +28,13 @@ public class DynatracePlan {
         this.environmentid = environmentid;
     }
 
-    public void setEndpoint(String endpoint) { this.endpoint = endpoint; }
-
-    public void setTenanttoken(String tenanttoken) { this.tenanttoken = tenanttoken; }
+    public void setApiurl(String apiurl) { this.apiurl = apiurl; }
 
     public void setApitoken(String apitoken) { this.apitoken = apitoken; }
 
-    public String getTenanttoken() { return tenanttoken; }
+    public String getApiurl() { return this.apiurl; }
 
-    public String getEndpoint() { return endpoint; }
-
-    public String getApitoken() { return apitoken; }
+    public String getApitoken() { return this.apitoken; }
 
     public String getPlanId() {
         return this.planId;
@@ -47,8 +42,8 @@ public class DynatracePlan {
 
     public void setPlanId() throws Exception {
         System.out.println(this.toString());
-        if ((this.name == null) || (this.environmentid == null) || (this.tenanttoken == null && this.apitoken == null)) {
-            throw new Exception("No null name,environmentid,apitoken|tenanttoken allowed");
+        if ((this.name == null) || (this.environmentid == null) || (this.apitoken == null)) {
+            throw new Exception("No null name,environmentid,apitoken allowed");
         }
 
         if (this.planId != null)
@@ -58,7 +53,7 @@ public class DynatracePlan {
     }
 
     public String toString() {
-        return "Plan [name=" + this.name + ", environmentid=" + this.environmentid + ", tenanttoken=" + this.tenanttoken + ", apitoken=" + this.apitoken + ", endpoint=" + this.endpoint +  ", planId=" + this.planId + "]";
+        return "Plan [name=" + this.name + ", environmentid=" + this.environmentid + ", apitoken=" + this.apitoken + ", apiurl=" + this.apiurl +  ", planId=" + this.planId + "]";
     }
 }
 

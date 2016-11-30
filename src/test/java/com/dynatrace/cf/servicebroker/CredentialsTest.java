@@ -33,7 +33,7 @@ public final class CredentialsTest extends AbstractSerializationTest<Credentials
 
     @Override
     protected Credentials getInstance() {
-        return new Credentials("test-tenant", "test-apikey", "test-tenanttoken", "test-server");
+        return new Credentials("test-tenant", "test-apikey", "test-apiurl");
     }
 
 }
