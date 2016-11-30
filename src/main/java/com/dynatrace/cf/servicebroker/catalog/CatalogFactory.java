@@ -63,7 +63,7 @@ public class CatalogFactory {
     throws Exception
   {
     System.out.println("DYNATRACE_SERVICE_PLANS set to: " + dynatracePlans);
-    String serviceId = UUID.nameUUIDFromBytes("Dynatrace_ServiceId_v1".getBytes()).toString();
+    String serviceId = UUID.nameUUIDFromBytes("Dynatrace_ServiceId_v12".getBytes()).toString();
 
     ObjectMapper objectMapper = new ObjectMapper();
     objectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
@@ -83,7 +83,7 @@ public class CatalogFactory {
                           .tags(new String[] { "dynatrace", "performance", "monitoring", "apm", "analytics" })
                           .metadata()
                               .displayName("Dynatrace")
-                              .imageUrl(URI.create("https://www.dynatrace.com/images/brand/android-chrome-48x48.png"))
+                              .imageUrl(URI.create("https://assets.dynatrace.com/global/resources/Signet_Logo_RGB_CP_48x48px.png"))
                               .longDescription("Dynatrace is all-in-one full stack performance " +
                                    "monitoring and management powered by artificial " +
                                    "intelligence that provides you with automated application-health " +
