@@ -18,8 +18,10 @@ package com.dynatrace.cf.servicebroker.provisioning;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.util.Assert;
 
+@JsonIgnoreProperties(ignoreUnknown=true)
 final class ProvisioningRequest {
 
     private final String serviceId;
