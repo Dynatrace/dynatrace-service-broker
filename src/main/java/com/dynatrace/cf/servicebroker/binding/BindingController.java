@@ -41,7 +41,7 @@ final class BindingController {
         String planId = bindingRequest.getPlanId();
         DynatracePlan plan = CatalogFactory.getAssociatedPlanById(planId);
         System.out.println("Plan Id: " + planId + " and the plan is : " + plan);
-        return new BindingResponse(new Credentials(plan.getEnvironmentid(), plan.getApitoken(), plan.getApiurl()), null);
+        return new BindingResponse(new Credentials(plan.getEnvironmentid(), plan.getApitoken(), plan.getApiurl(), plan.getSkiperrors()), null);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/v2/service_instances/*/service_bindings/*")

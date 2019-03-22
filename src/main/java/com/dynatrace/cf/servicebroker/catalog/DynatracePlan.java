@@ -10,35 +10,30 @@ public class DynatracePlan {
     private String environmentid = null;
     private String apitoken = null;
     private String apiurl = null;
+    private Boolean skiperrors = null;
     private String planId = null;
 
-    public String getName() {
-        return this.name;
-    }
+    public void setName(String name) { this.name = name; }    
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEnvironmentid() {
-        return this.environmentid;
-    }
-
-    public void setEnvironmentid(String environmentid) {
-        this.environmentid = environmentid;
-    }
+    public void setEnvironmentid(String environmentid) { this.environmentid = environmentid; }
 
     public void setApiurl(String apiurl) { this.apiurl = apiurl; }
 
     public void setApitoken(String apitoken) { this.apitoken = apitoken; }
 
+    public void setSkiperrors(Boolean skiperrors) { this.skiperrors = skiperrors; }
+
+    public String getName() { return this.name; }
+
+    public String getEnvironmentid() { return this.environmentid; }
+
     public String getApiurl() { return this.apiurl; }
 
     public String getApitoken() { return this.apitoken; }
 
-    public String getPlanId() {
-        return this.planId;
-    }
+    public Boolean getSkiperrors() { return this.skiperrors; }
+
+    public String getPlanId() { return this.planId; }
 
     public void setPlanId() throws Exception {
         System.out.println(this.toString());
@@ -53,7 +48,7 @@ public class DynatracePlan {
     }
 
     public String toString() {
-        return "Plan [name=" + this.name + ", environmentid=" + this.environmentid + ", apitoken=" + this.apitoken + ", apiurl=" + this.apiurl +  ", planId=" + this.planId + "]";
+        return "Plan [name=" + this.name + ", environmentid=" + this.environmentid + ", apitoken=" + this.apitoken + ", apiurl=" + this.apiurl +  ", skiperrors=" + this.skiperrors +  ", planId=" + this.planId + "]";
     }
 }
 

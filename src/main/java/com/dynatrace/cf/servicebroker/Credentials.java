@@ -17,18 +17,20 @@
 package com.dynatrace.cf.servicebroker;
 
 /**
- * A holder for credential information such as the environmentid, apitoken, apiurl
+ * A holder for credential information such as the environmentid, apitoken, apiurl, skiperrors
  */
 public final class Credentials {
 
   private String environmentid;
   private String apitoken;
   private String apiurl;
+  private Boolean skiperrors;
 
-  public Credentials(String environmentid, String apitoken, String apiurl) {
+  public Credentials(String environmentid, String apitoken, String apiurl, Boolean skiperrors) {
     this.environmentid = environmentid;
     this.apitoken = apitoken;
     this.apiurl = apiurl;
+    this.skiperrors = skiperrors;
   }
 
   public String getEnvironmentid() throws Exception {
@@ -41,6 +43,10 @@ public final class Credentials {
 
   public String getApiurl() throws Exception {
     return apiurl;
+  }
+
+  public Boolean getSkiperrors() throws Exception {
+    return skiperrors;
   }
 
 }
