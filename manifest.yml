@@ -7,6 +7,6 @@ applications:
   host: dt-sb
   buildpack: https://github.com/cloudfoundry/java-buildpack.git
   env:
-    DYNATRACE_SERVICE_PLANS: '{"A":{"name":"A","environmentid":"kwlxxxxx","apitoken":"xxxxxxxxxxx","apiurl":"https://yourmanagedcluster.com/api"},"B":{"name":"B","environmentid":"pdexxxxx","apitoken":"yyyyyyyyyyyyy","apiurl":"https://yourmanagedcluster.com/api"}}'
+    DYNATRACE_SERVICE_PLANS: '{"A":{"name":"A","environmentid":"kwlxxxxx","apitoken":"xxxxxxxxxxx","apiurl":"https://yourmanagedcluster.com/api","skiperrors":"false"},"B":{"name":"B","environmentid":"pdexxxxx","apitoken":"yyyyyyyyyyyyy","apiurl":"https://yourmanagedcluster.com/api","skiperrors":"true"}}'
     SECURITY_USER_NAME: admin
     SECURITY_USER_PASSWORD: admin
