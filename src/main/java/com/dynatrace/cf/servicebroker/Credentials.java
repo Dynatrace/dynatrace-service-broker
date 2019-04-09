@@ -24,9 +24,9 @@ public final class Credentials {
   private String environmentid;
   private String apitoken;
   private String apiurl;
-  private Boolean skiperrors;
+  private String skiperrors;
 
-  public Credentials(String environmentid, String apitoken, String apiurl, Boolean skiperrors) {
+  public Credentials(String environmentid, String apitoken, String apiurl, String skiperrors) {
     this.environmentid = environmentid;
     this.apitoken = apitoken;
     this.apiurl = apiurl;
@@ -45,7 +45,7 @@ public final class Credentials {
     return apiurl;
   }
 
-  public Boolean getSkiperrors() throws Exception {
+  public String getSkiperrors() throws Exception {
     return skiperrors;
   }
 

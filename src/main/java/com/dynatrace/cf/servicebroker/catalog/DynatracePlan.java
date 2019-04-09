@@ -10,7 +10,7 @@ public class DynatracePlan {
     private String environmentid = null;
     private String apitoken = null;
     private String apiurl = null;
-    private Boolean skiperrors = null;
+    private String skiperrors = null;
     private String planId = null;
 
     public void setName(String name) { this.name = name; }    
@@ -21,7 +21,7 @@ public class DynatracePlan {
 
     public void setApitoken(String apitoken) { this.apitoken = apitoken; }
 
-    public void setSkiperrors(Boolean skiperrors) { this.skiperrors = skiperrors; }
+    public void setSkiperrors(String skiperrors) { this.skiperrors = skiperrors; }
 
     public String getName() { return this.name; }
 
@@ -31,7 +31,7 @@ public class DynatracePlan {
 
     public String getApitoken() { return this.apitoken; }
 
-    public Boolean getSkiperrors() { return this.skiperrors; }
+    public String getSkiperrors() { return this.skiperrors; }
 
     public String getPlanId() { return this.planId; }
 
