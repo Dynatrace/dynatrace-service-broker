@@ -20,7 +20,7 @@ $ cf push
 ### Environment Variables
 Since the application is designed to work in a PaaS environment, all configuration is done with environment variables.
 The `DYNATRACE_SERVICE_PLANS` value contains the JSON payload to connect to Dynatrace SaaS/Managed.   
-This payload consists of `environmentid`, `apitoken`, `apiurl` and `skiperrors` values to connect to Dynatrace SaaS/Managed.
+This payload consists of `environmentid`, `apitoken`, `apiurl`, `skiperrors`, and `networkzone` values to connect to Dynatrace SaaS/Managed.
 
 | Key | Description
 | --- | -----------
@@ -28,6 +28,7 @@ This payload consists of `environmentid`, `apitoken`, `apiurl` and `skiperrors` 
 | `apitoken` | The token for integrating your Dynatrace environment with Cloud Foundry. You can find it in the deploy Dynatrace section within your environment.
 | `apiurl` | (Optional) The base URL of the Dynatrace API. If you are using Dynatrace Managed you will need to set this property to `https://<your-managed-server-url>/e/<environmentId>/api`. If you are using Dynatrace SaaS you don't need to set this property.
 | `skiperrors` | (Optional) Skips errors during download of the OneAgent.
+| `networkzone` | (Optional) Assign Network Zone to the OneAgent.
 
 | Environment variable | Description
 | -------------------- | -----------
@@ -37,7 +38,7 @@ This payload consists of `environmentid`, `apitoken`, `apiurl` and `skiperrors` 
 
 Sample JSON payload
 ```
-DYNATRACE_SERVICE_PLANS: '{"A":{"name":"A","environmentid":"kwlxxxxx","apitoken":"xxxxxxxxxxx","apiurl":"https://yourmanagedcluster.com/api","skiperrors":"false"},"B":{"name":"B","environmentid":"pdexxxxx","apitoken":"yyyyyyyyyyyyy","apiurl":"https://yourmanagedcluster.com/api","skiperrors":"true"}}'
+DYNATRACE_SERVICE_PLANS: '{"A":{"name":"A","environmentid":"kwlxxxxx","apitoken":"xxxxxxxxxxx","apiurl":"https://yourmanagedcluster.com/api","skiperrors":"false","networkzone":"xxxxx"},"B":{"name":"B","environmentid":"pdexxxxx","apitoken":"yyyyyyyyyyyyy","apiurl":"https://yourmanagedcluster.com/api","skiperrors":"true","networkzone":"yyyyy"}}'
 ```
 
 ## Developing
