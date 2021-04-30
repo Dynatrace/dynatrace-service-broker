@@ -11,6 +11,7 @@ public class DynatracePlan {
     private String apitoken = null;
     private String apiurl = null;
     private String skiperrors = null;
+    private String networkzone = null;
     private String planId = null;
 
     public void setName(String name) { this.name = name; }    
@@ -32,6 +33,8 @@ public class DynatracePlan {
     public String getApitoken() { return this.apitoken; }
 
     public String getSkiperrors() { return this.skiperrors; }
+    
+    public String getNetworkzone() { return this.networkzone; }
 
     public String getPlanId() { return this.planId; }
 
@@ -48,7 +51,7 @@ public class DynatracePlan {
     }
 
     public String toString() {
-        return "Plan [name=" + this.name + ", environmentid=" + this.environmentid + ", apitoken=" + this.apitoken + ", apiurl=" + this.apiurl +  ", skiperrors=" + this.skiperrors +  ", planId=" + this.planId + "]";
+        return "Plan [name=" + this.name + ", environmentid=" + this.environmentid + ", apitoken=" + this.apitoken + ", apiurl=" + this.apiurl + ", skiperrors=" + this.skiperrors + ", networkzone=" + this.networkzone + ", planId=" + this.planId + "]";
     }
 }
 

@@ -42,7 +42,7 @@ public final class BindingControllerTest extends AbstractControllerTest {
     @Test
     public void testDelete() throws Exception {
         this.mockMvc.perform(delete("/v2/service_instances/0/service_bindings/1")
-                .param("service_id", "test-service-id").param("plan_id", "38400000-8cf0-11bd-b23e-10b96e4ef00d"))
+                .param("service_id", "test-service-id").param("plan_id", "3b451117-b924-35b3-b6fc-0051cf4e6837"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").exists());
     }
@@ -50,7 +50,7 @@ public final class BindingControllerTest extends AbstractControllerTest {
     private String payload() throws JsonProcessingException {
         Map<String, String> m = new HashMap<>();
         m.put("service_id", "test-service-id");
-        m.put("plan_id", "38400000-8cf0-11bd-b23e-10b96e4ef00d");
+        m.put("plan_id", "3b451117-b924-35b3-b6fc-0051cf4e6837");
         m.put("app_guid", "test-app-guid");
 
         return this.objectMapper.writeValueAsString(m);
