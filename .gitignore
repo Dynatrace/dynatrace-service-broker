@@ -1,3 +1,5 @@
 .idea/
 target/
 META-INF/
+*.swp
+Session.vim
