@@ -38,7 +38,6 @@ public class CatalogFactory {
       return null;
     }
     for (DynatracePlan p : plans.values()) {
-      System.out.println("\t\tDynatracePlan: " + p + ", checking for planId: " + dynatracePlanId);
       if (p.getPlanId().equals(dynatracePlanId)) {
         return p;
       }
@@ -51,7 +50,6 @@ public class CatalogFactory {
       return null;
     }
     for (DynatracePlan p : plans.values()) {
-      System.out.println("\t\tDynatracePlan: " + p + ", checking for planname: " + dynatracePlanName);
       if (p.getName().equals(dynatracePlanName)) {
         return p;
       }
@@ -62,7 +60,6 @@ public class CatalogFactory {
   Catalog catalog(@Value("${DYNATRACE_SERVICE_PLANS}") String dynatracePlans)
     throws Exception
   {
-    System.out.println("DYNATRACE_SERVICE_PLANS set to: " + dynatracePlans);
     String serviceId = UUID.nameUUIDFromBytes("Dynatrace_ServiceId_v12".getBytes()).toString();
 
     ObjectMapper objectMapper = new ObjectMapper();
@@ -70,8 +67,7 @@ public class CatalogFactory {
     plans = (Map)objectMapper.readValue(dynatracePlans, objectMapper.getTypeFactory().constructMapLikeType(HashMap.class, String.class, DynatracePlan.class));
 
     for (DynatracePlan p : plans.values()) {
-      p.setPlanId();
-      System.out.println("\t\tDynatracePlan: " + p);
+      p.validate();
     }
 
     return new Catalog()
