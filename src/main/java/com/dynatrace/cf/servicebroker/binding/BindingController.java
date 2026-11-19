@@ -39,6 +39,7 @@ final class BindingController {
         this.logger.info("Binding Request Received: {}", bindingRequest);
         String planId = bindingRequest.getPlanId();
         DynatracePlan plan = CatalogFactory.getAssociatedPlanById(planId);
+        System.out.println("Plan Id: " + planId + " and the plan is : " + plan);
         return new BindingResponse(plan.getCredentials(), null);
     }
 

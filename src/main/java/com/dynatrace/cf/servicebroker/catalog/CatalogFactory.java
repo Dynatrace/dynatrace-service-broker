@@ -38,6 +38,7 @@ public class CatalogFactory {
       return null;
     }
     for (DynatracePlan p : plans.values()) {
+      System.out.println("\t\tDynatracePlan: " + p + ", checking for planId: " + dynatracePlanId);
       if (p.getPlanId().equals(dynatracePlanId)) {
         return p;
       }
@@ -50,6 +51,7 @@ public class CatalogFactory {
       return null;
     }
     for (DynatracePlan p : plans.values()) {
+      System.out.println("\t\tDynatracePlan: " + p + ", checking for planname: " + dynatracePlanName);
       if (p.getName().equals(dynatracePlanName)) {
         return p;
       }
@@ -68,6 +70,7 @@ public class CatalogFactory {
 
     for (DynatracePlan p : plans.values()) {
       p.validate();
+      System.out.println("\t\tDynatracePlan: " + p);
     }
 
     return new Catalog()
