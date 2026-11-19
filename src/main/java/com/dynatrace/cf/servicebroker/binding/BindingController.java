@@ -16,7 +16,6 @@
 
 package com.dynatrace.cf.servicebroker.binding;
 
-import com.dynatrace.cf.servicebroker.Credentials;
 import com.dynatrace.cf.servicebroker.catalog.DynatracePlan;
 import com.dynatrace.cf.servicebroker.catalog.CatalogFactory;
 import org.slf4j.Logger;
@@ -41,7 +40,7 @@ final class BindingController {
         String planId = bindingRequest.getPlanId();
         DynatracePlan plan = CatalogFactory.getAssociatedPlanById(planId);
         System.out.println("Plan Id: " + planId + " and the plan is : " + plan);
-        return new BindingResponse(new Credentials(plan.getEnvironmentid(), plan.getApitoken(), plan.getApiurl(), plan.getSkiperrors(), plan.getNetworkzone()), null);
+        return new BindingResponse(plan.getCredentials(), null);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/v2/service_instances/*/service_bindings/*")

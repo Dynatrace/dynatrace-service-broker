@@ -16,11 +16,11 @@
 
 package com.dynatrace.cf.servicebroker.binding;
 
-import com.dynatrace.cf.servicebroker.Credentials;
 import com.dynatrace.cf.servicebroker.AbstractSerializationTest;
 
 import java.io.IOException;
 import java.net.URI;
+import java.util.Collections;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
@@ -38,8 +38,8 @@ public final class BindingResponseTest extends AbstractSerializationTest<Binding
         return new BindingResponse(getCredentials(), URI.create("http://test.syslog.drain.url"));
     }
 
-    private Credentials getCredentials() {
-        return new Credentials("test-tenant", "test-apikey", "test-apiurl", "false", "test-networkzone");
+    private Map<String, Object> getCredentials() {
+        return Collections.<String, Object>singletonMap("environmentid", "test-tenant");
     }
 
 }

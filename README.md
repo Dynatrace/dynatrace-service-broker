@@ -19,16 +19,25 @@ $ cf push
 
 ### Environment Variables
 Since the application is designed to work in a PaaS environment, all configuration is done with environment variables.
-The `DYNATRACE_SERVICE_PLANS` value contains the JSON payload to connect to Dynatrace SaaS/Managed.   
-This payload consists of `environmentid`, `apitoken`, `apiurl`, `skiperrors`, and `networkzone` values to connect to Dynatrace SaaS/Managed.
+The `DYNATRACE_SERVICE_PLANS` value contains the JSON payload to connect to your Dynatrace tenant.
+This payload consists of the properties which were configured.
 
-| Key | Description
-| --- | -----------
-| `environmentid` | Your Dynatrace environment ID is the unique identifier of your Dynatrace environment. You can find it in the deploy Dynatrace section within your environment.
-| `apitoken` | The token for integrating your Dynatrace environment with Cloud Foundry. You can find it in the deploy Dynatrace section within your environment.
-| `apiurl` | (Optional) The base URL of the Dynatrace API. If you are using Dynatrace Managed you will need to set this property to `https://<your-managed-server-url>/e/<environmentId>/api`. If you are using Dynatrace SaaS you don't need to set this property.
-| `skiperrors` | (Optional) Skips errors during download of the OneAgent.
-| `networkzone` | (Optional) Assign Network Zone to the OneAgent.
+| Key           | Type    | Description                                                                                 | Required | Default         |
+| ------------- | ------- | ------------------------------------------------------------------------------------------- | -------- | --------------- |
+| name          | string  | Name of the plan. Used by the broker only, it is not passed on to the application.          | Yes      | N/A             |
+| environmentid | string  | The ID for the Dynatrace environment.                                                       | Yes      | N/A             |
+| apitoken      | string  | The API Token for the Dynatrace environment.                                                | Yes      | N/A             |
+| apiurl        | string  | Overrides the default Dynatrace API URL to connect to.                                      | No       | Default API URL |
+| customoneagenturl | string | Custom download URL for the OneAgent installer (paas-sh) | No | empty |
+| skiperrors    | boolean | If true, the deployment doesn't fail if the Dynatrace agent download fails.                 | No       | false           |
+| networkzone   | string  | If set, agent is configured to choose communication endpoints located at the field's value. | No       | empty           |
+| enablefips    | boolean | If true, the [FIPS 140-2 mode](https://www.dynatrace.com/news/blog/dynatrace-achieves-fips-140-2-certification/) is enabled | No       | false           |
+| removetechnologies| string | Removes OneAgent code-modules via a comma-separated list. This is applied **before** addtechnologies. | No | empty |
+| addtechnologies| string | Adds additional OneAgent code-modules via a comma-separated list. See [supported values](https://docs.dynatrace.com/docs/dynatrace-api/environment-api/deployment/oneagent/download-oneagent-version#parameters) in the "included" row | No | empty |
+| unconfigured | boolean | Must be set to true if an installer without the connection metadata is being used via customoneagenturl | No | false |
+| tenanttoken | string | [Dynatrace Tenant token](https://docs.dynatrace.com/docs/manage/identity-access-management-classic/access-tokens-and-oauth-clients/access-tokens/rotate-tenant-token) | when unconfigured is set to true | empty |
+|dtconnectionpoint | string | [Connection endpoints](https://docs.dynatrace.com/docs/dynatrace-api/environment-api/deployment/oneagent/get-connectivity-info) | when unconfigured is set to true | empty |
+
 
 | Environment variable | Description
 | -------------------- | -----------
