@@ -17,8 +17,7 @@
 package com.dynatrace.cf.servicebroker.binding;
 
 import com.dynatrace.cf.servicebroker.AbstractControllerTest;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 
 import java.util.HashMap;
@@ -34,7 +33,7 @@ public final class BindingControllerTest extends AbstractControllerTest {
     @Test
     public void create() throws Exception {
         this.mockMvc.perform(put("/v2/service_instances/0/service_bindings/1").content(payload()).contentType(MediaType
-                .APPLICATION_JSON))
+                .APPLICATION_JSON).header(API_VERSION, "2.3"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.credentials.environmentid").exists());
     }
@@ -42,12 +41,12 @@ public final class BindingControllerTest extends AbstractControllerTest {
     @Test
     public void testDelete() throws Exception {
         this.mockMvc.perform(delete("/v2/service_instances/0/service_bindings/1")
-                .param("service_id", "test-service-id").param("plan_id", "3b451117-b924-35b3-b6fc-0051cf4e6837"))
+                .param("service_id", "test-service-id").param("plan_id", "3b451117-b924-35b3-b6fc-0051cf4e6837").header(API_VERSION, "2.3"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").exists());
     }
 
-    private String payload() throws JsonProcessingException {
+    private String payload() {
         Map<String, String> m = new HashMap<>();
         m.put("service_id", "test-service-id");
         m.put("plan_id", "3b451117-b924-35b3-b6fc-0051cf4e6837");

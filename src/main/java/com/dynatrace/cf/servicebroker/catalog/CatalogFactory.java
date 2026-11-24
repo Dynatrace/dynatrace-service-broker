@@ -17,15 +17,14 @@
 package com.dynatrace.cf.servicebroker.catalog;
 
 import java.net.URI;
-import java.util.HashMap;
 import java.util.UUID;
 import java.util.Map;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.json.JsonMapper;
 
 
 @Configuration
@@ -64,9 +63,7 @@ public class CatalogFactory {
   {
     String serviceId = UUID.nameUUIDFromBytes("Dynatrace_ServiceId_v12".getBytes()).toString();
 
-    ObjectMapper objectMapper = new ObjectMapper();
-    objectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
-    plans = (Map)objectMapper.readValue(dynatracePlans, objectMapper.getTypeFactory().constructMapLikeType(HashMap.class, String.class, DynatracePlan.class));
+    plans = new JsonMapper().readValue(dynatracePlans, new TypeReference<Map<String, DynatracePlan>>() {});
 
     for (DynatracePlan p : plans.values()) {
       p.validate();

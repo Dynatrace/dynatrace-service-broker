@@ -16,8 +16,8 @@
 
 package com.dynatrace.cf.servicebroker;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.Test;
+import tools.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.Map;

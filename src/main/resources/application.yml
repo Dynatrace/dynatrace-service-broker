@@ -1,0 +1,7 @@
+# Ensure backwards compability for older versions of the service-broker.
+# If SECURITY_USER_PASSWORD is not set, Spring generates a random password and logs it at startup.
+spring:
+  security:
+    user:
+      name: ${SECURITY_USER_NAME:user}
+      password: ${SECURITY_USER_PASSWORD:}

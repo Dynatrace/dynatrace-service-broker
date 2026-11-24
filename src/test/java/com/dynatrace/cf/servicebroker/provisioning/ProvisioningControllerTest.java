@@ -17,8 +17,7 @@
 package com.dynatrace.cf.servicebroker.provisioning;
 
 import com.dynatrace.cf.servicebroker.AbstractControllerTest;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 
 import java.util.HashMap;
@@ -33,7 +32,7 @@ public final class ProvisioningControllerTest extends AbstractControllerTest {
 
     @Test
     public void create() throws Exception {
-        this.mockMvc.perform(put("/v2/service_instances/0").content(payload()).contentType(MediaType.APPLICATION_JSON))
+        this.mockMvc.perform(put("/v2/service_instances/0").content(payload()).contentType(MediaType.APPLICATION_JSON).header(API_VERSION, "2.3"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").exists());
     }
@@ -41,12 +40,12 @@ public final class ProvisioningControllerTest extends AbstractControllerTest {
     @Test
     public void testDelete() throws Exception {
         this.mockMvc.perform(delete("/v2/service_instances/0")
-                .param("service_id", "test-service-id").param("plan_id", "38400000-8cf0-11bd-b23e-10b96e4ef00d"))
+                .param("service_id", "test-service-id").param("plan_id", "38400000-8cf0-11bd-b23e-10b96e4ef00d").header(API_VERSION, "2.3"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").exists());
     }
 
-    private String payload() throws JsonProcessingException {
+    private String payload() {
         Map<String, String> m = new HashMap<>();
         m.put("service_id", "test-service-id");
         m.put("plan_id", "38400000-8cf0-11bd-b23e-10b96e4ef00d");

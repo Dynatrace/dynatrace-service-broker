@@ -16,32 +16,26 @@
 
 package com.dynatrace.cf.servicebroker;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.web.context.WebApplicationContext;
-
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
+import tools.jackson.databind.json.JsonMapper;
 
 @ActiveProfiles("test")
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Application.class)
-@WebAppConfiguration
+@SpringBootTest
+@AutoConfigureMockMvc
+@WithMockUser
 public abstract class AbstractControllerTest {
 
-    @Autowired
-    protected volatile ObjectMapper objectMapper;
-
-    protected volatile MockMvc mockMvc;
+    protected static final String API_VERSION = "X-Broker-Api-Version";
 
     @Autowired
-    final void setWebApplicationContext(WebApplicationContext webApplicationContext) {
-        this.mockMvc = webAppContextSetup(webApplicationContext).build();
-    }
+    protected JsonMapper objectMapper;
+
+    @Autowired
+    protected MockMvc mockMvc;
 
 }

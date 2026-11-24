@@ -25,7 +25,6 @@ import java.util.List;
 import java.util.UUID;
 import java.util.Map;
 
-import org.json.simple.parser.ParseException;
 
 
 final class Service {
@@ -81,7 +80,7 @@ final class Service {
 
     Boolean getBindable() {
         synchronized (this.monitor) {
-            Assert.notNull(this.bindable);
+            Assert.notNull(this.bindable, "Services must specify bindable");
             return this.bindable;
         }
     }
@@ -194,7 +193,7 @@ final class Service {
         }
     }
 
-    Service addAllPlans(/*@Value("${RUXIT_PLANS}")*/ Map<String,DynatracePlan> dynatracePlans) throws ParseException {
+    Service addAllPlans(/*@Value("${RUXIT_PLANS}")*/ Map<String,DynatracePlan> dynatracePlans) {
 
         for (DynatracePlan dynatrace_plan: dynatracePlans.values()) {
             String dynatracePlanId = dynatrace_plan.getPlanId();

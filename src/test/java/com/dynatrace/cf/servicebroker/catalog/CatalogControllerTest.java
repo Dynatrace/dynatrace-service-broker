@@ -17,7 +17,7 @@
 package com.dynatrace.cf.servicebroker.catalog;
 
 import com.dynatrace.cf.servicebroker.AbstractControllerTest;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -27,7 +27,7 @@ public final class CatalogControllerTest extends AbstractControllerTest {
 
     @Test
     public void catalog() throws Exception {
-        this.mockMvc.perform(get("/v2/catalog"))
+        this.mockMvc.perform(get("/v2/catalog").header(API_VERSION, "2.3"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.services").exists());
     }
