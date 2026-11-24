@@ -17,22 +17,22 @@
 package com.dynatrace.cf.servicebroker.binding;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.dynatrace.cf.servicebroker.Credentials;
 
 import java.net.URI;
+import java.util.Map;
 
 final class BindingResponse {
 
-    private final Credentials credentials;
+    private final Map<String, Object> credentials;
 
     private final URI syslogDrainUrl;
 
-    BindingResponse(Credentials credentials, URI syslogDrainUrl) {
+    BindingResponse(Map<String, Object> credentials, URI syslogDrainUrl) {
         this.credentials = credentials;
         this.syslogDrainUrl = syslogDrainUrl;
     }
 
-    Credentials getCredentials() {
+    Map<String, Object> getCredentials() {
         return this.credentials;
     }
 

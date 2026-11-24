@@ -1,57 +1,48 @@
 package com.dynatrace.cf.servicebroker.catalog;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 import java.util.UUID;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class DynatracePlan {
-    private String name = null;
-    private String environmentid = null;
-    private String apitoken = null;
-    private String apiurl = null;
-    private String skiperrors = null;
-    private String networkzone = null;
-    private String planId = null;
+    // List of credentials that will be redacted before logging them out
+    private static final List<String> SECRET_KEYS = Arrays.asList("apitoken", "tenanttoken");
 
-    public void setName(String name) { this.name = name; }    
+    private String name;
+    private final Map<String, Object> credentials = new HashMap<>();
+    private String planId;
 
-    public void setEnvironmentid(String environmentid) { this.environmentid = environmentid; }
+    public void setName(String name) { this.name = name; }
 
-    public void setApiurl(String apiurl) { this.apiurl = apiurl; }
+    @JsonAnySetter
+    public void setCredential(String key, Object value) { credentials.put(key, value); }
 
-    public void setApitoken(String apitoken) { this.apitoken = apitoken; }
+    public String getName() { return name; }
 
-    public void setSkiperrors(String skiperrors) { this.skiperrors = skiperrors; }
+    public Map<String, Object> getCredentials() { return credentials; }
 
-    public String getName() { return this.name; }
+    public String getPlanId() { return planId; }
 
-    public String getEnvironmentid() { return this.environmentid; }
-
-    public String getApiurl() { return this.apiurl; }
-
-    public String getApitoken() { return this.apitoken; }
-
-    public String getSkiperrors() { return this.skiperrors; }
-    
-    public String getNetworkzone() { return this.networkzone; }
-
-    public String getPlanId() { return this.planId; }
-
-    public void setPlanId() throws Exception {
-        System.out.println(this.toString());
-        if ((this.name == null) || (this.environmentid == null) || (this.apitoken == null)) {
-            throw new Exception("No null name,environmentid,apitoken allowed");
+    public void validate() throws Exception {
+        if (name == null || credentials.get("environmentid") == null || credentials.get("apitoken") == null) {
+            throw new Exception("No null name, environmentid,apitoken allowed");
         }
-
-        if (this.planId != null)
-            return;
-
-        this.planId = UUID.nameUUIDFromBytes((this.name + this.environmentid).getBytes()).toString();
+        planId = UUID.nameUUIDFromBytes((name + credentials.get("environmentid")).getBytes()).toString();
     }
 
+    @Override
     public String toString() {
-        return "Plan [name=" + this.name + ", environmentid=" + this.environmentid + ", apitoken=" + this.apitoken + ", apiurl=" + this.apiurl + ", skiperrors=" + this.skiperrors + ", networkzone=" + this.networkzone + ", planId=" + this.planId + "]";
+        Map<String, Object> printable = new TreeMap<>(credentials);
+        for (String secret : SECRET_KEYS) {
+            if (printable.containsKey(secret)) {
+                printable.put(secret, "REDACTED");
+            }
+        }
+        return "Plan [name=" + name + ", planId=" + planId + ", " + printable + "]";
     }
 }
-
