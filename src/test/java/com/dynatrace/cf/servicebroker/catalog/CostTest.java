@@ -21,7 +21,7 @@ import com.dynatrace.cf.servicebroker.AbstractSerializationTest;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public final class CostTest extends AbstractSerializationTest<Cost> {
 

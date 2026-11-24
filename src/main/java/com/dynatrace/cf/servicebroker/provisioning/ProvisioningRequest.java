@@ -36,10 +36,10 @@ final class ProvisioningRequest {
     ProvisioningRequest(@JsonProperty("service_id") String serviceId, @JsonProperty("plan_id") String planId,
                         @JsonProperty("organization_guid") String organizationGuid,
                         @JsonProperty("space_guid") String spaceGuid) {
-        Assert.notNull(serviceId);
-        Assert.notNull(planId);
-        Assert.notNull(organizationGuid);
-        Assert.notNull(spaceGuid);
+        Assert.notNull(serviceId, "serviceId must not be null");
+        Assert.notNull(planId, "planId must not be null");
+        Assert.notNull(organizationGuid, "organizationGuid must not be null");
+        Assert.notNull(spaceGuid, "spaceGuid must not be null");
 
         this.serviceId = serviceId;
         this.planId = planId;

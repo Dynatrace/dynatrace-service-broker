@@ -19,20 +19,16 @@ package com.dynatrace.cf.servicebroker;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.context.embedded.FilterRegistrationBean;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import tools.jackson.databind.json.JsonMapper;
 
 /**
  * Main application entry point and configuration
  */
-@ComponentScan
-@Configuration
-@EnableAutoConfiguration
+@SpringBootApplication
 public class Application {
 
     /**
@@ -47,19 +43,19 @@ public class Application {
     }
 
     @Bean
-    FilterRegistrationBean brokerApiVersionFilter() {
-        FilterRegistrationBean bean = new FilterRegistrationBean();
-        bean.setFilter(new BrokerApiVersionFilter());
+    FilterRegistrationBean<BrokerApiVersionFilter> brokerApiVersionFilter() {
+        FilterRegistrationBean<BrokerApiVersionFilter> bean = new FilterRegistrationBean<>(new BrokerApiVersionFilter());
         bean.addUrlPatterns("/v2/*");
 
         return bean;
     }
 
     @Bean
-    ObjectMapper objectMapper() {
-        return new ObjectMapper()
-                .setVisibility(PropertyAccessor.GETTER, JsonAutoDetect.Visibility.ANY)
-                .setSerializationInclusion(JsonInclude.Include.NON_NULL);
+    JsonMapper jsonMapper() {
+        return JsonMapper.builder()
+                .changeDefaultVisibility(v -> v.withVisibility(PropertyAccessor.GETTER, JsonAutoDetect.Visibility.ANY))
+                .changeDefaultPropertyInclusion(i -> i.withValueInclusion(JsonInclude.Include.NON_NULL))
+                .build();
     }
 
 }

@@ -18,8 +18,8 @@ package com.dynatrace.cf.servicebroker;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.Test;
+import tools.jackson.databind.json.JsonMapper;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.List;
@@ -29,9 +29,10 @@ import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 
 public abstract class AbstractSerializationTest<T> {
 
-    private final ObjectMapper objectMapper = new ObjectMapper()
-            .setVisibility(PropertyAccessor.GETTER, Visibility.ANY)
-            .setSerializationInclusion(JsonInclude.Include.NON_NULL);
+    private final JsonMapper objectMapper = JsonMapper.builder()
+            .changeDefaultVisibility(v -> v.withVisibility(PropertyAccessor.GETTER, Visibility.ANY))
+            .changeDefaultPropertyInclusion(i -> i.withValueInclusion(JsonInclude.Include.NON_NULL))
+            .build();
 
     @Test
     public final void serialization() throws IOException {

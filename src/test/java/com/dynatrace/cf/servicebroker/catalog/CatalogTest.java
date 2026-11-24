@@ -20,7 +20,7 @@ import com.dynatrace.cf.servicebroker.AbstractSerializationTest;
 
 import java.util.Map;
 
-import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public final class CatalogTest extends AbstractSerializationTest<Catalog> {
 
