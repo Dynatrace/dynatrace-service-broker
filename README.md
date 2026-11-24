@@ -5,7 +5,7 @@ This project is a self-hostable application that provides a service broker that 
 ## Requirements
 
 ### Java, Maven
-The application is written in Java and packaged as a self executable JAR file.  This enables it to run in anywhere that Java is available. Building the application (required for deployment) requires [Maven][v].
+The application is written in Java (17 or newer) and packaged as a self executable JAR file.  This enables it to run in anywhere that Java is available. Building the application (required for deployment) requires [Maven][v].
 
 ## Deployment
 _The following instructions assume that you have an account on a Cloud Foundry cluster and [installed the `cf` command line tool][l]._
